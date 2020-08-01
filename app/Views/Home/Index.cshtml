@@ -1,0 +1,16 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+<h2>Values from the API</h2>
+</div>
+
+<div class="row">
+    <ul>
+        @foreach(var value in Model)
+        {
+            <li>@value</li>
+        }
+    </ul>
+</div>
