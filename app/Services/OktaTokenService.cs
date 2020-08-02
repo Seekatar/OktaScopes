@@ -67,7 +67,7 @@ namespace app.Services
 
             var postMessage = new Dictionary<string, string>();
             postMessage.Add("grant_type", "client_credentials");
-            postMessage.Add("scope", "access_token");
+            postMessage.Add("scope", "get_item access_token"); // space-separated scopes
             var request = new HttpRequestMessage(HttpMethod.Post, _oktaSettings.TokenUrl)
             {
                 Content = new FormUrlEncodedContent(postMessage)

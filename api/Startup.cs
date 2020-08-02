@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,6 +39,13 @@ namespace api
                 options.RequireHttpsMetadata = false;
             });
             services.AddControllers();
+            services.AddAuthorization( options => {
+                options.AddPolicy("AddScope", policy =>
+                    policy.Requirements.Add(new ScopeRequirement("add_item")));
+                options.AddPolicy("GetScope", policy =>
+                    policy.Requirements.Add(new ScopeRequirement("get_item")));
+            } );
+            services.AddSingleton<IAuthorizationHandler, ScopeHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

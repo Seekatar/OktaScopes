@@ -20,7 +20,7 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Policy = "GetScope")]
         public IEnumerable<string> Get()
         {
             var rng = new Random();
