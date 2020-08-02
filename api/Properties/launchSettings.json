@@ -15,8 +15,9 @@
       "launchUrl": "api/weatherforecast",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "Okta:Audience" :"https://www.joatbros.com/api/test",
-        "Okta:Issuer" :"https://dev-671484.okta.com/oauth2/default"
+        "Okta:Audience": "api://default",
+        "Okta:Issuer": "https://dev-671484.okta.com/oauth2/default",
+        "Okta:Authority": "https://dev-671484.okta.com/oauth2/default"
       }
     },
     "api": {
@@ -26,8 +27,9 @@
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "Okta:Audience" :"https://www.joatbros.com/api/test",
-        "Okta:Issuer" :"https://dev-671484.okta.com/oauth2/default"
+        "Okta:Audience": "api://default",
+        "Okta:Issuer": "https://dev-671484.okta.com/oauth2/default",
+        "Okta:Authority": "https://dev-671484.okta.com/oauth2/default"
       }
     }
   }

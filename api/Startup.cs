@@ -29,7 +29,8 @@ namespace api
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<OktaSettings>(Configuration.GetSection("Okta"));
-
+            var okta = Configuration.GetSection("Okta").Get<OktaSettings>();
+            Console.WriteLine(okta.ToString());
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -37,8 +38,9 @@ namespace api
             .AddJwtBearer(options =>
             {
                 // both values from from API->Authorization Servers
-                options.Authority = "https://dev-671484.okta.com/oauth2/default";
-                options.Audience = "api://default";
+                // if don't match exactly, get 401 returned to client
+                options.Authority = okta.Authority;
+                options.Audience = okta.Audience;
                 options.RequireHttpsMetadata = false;
             });
             services.AddControllers();
